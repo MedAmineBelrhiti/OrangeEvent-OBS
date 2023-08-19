@@ -1,0 +1,4 @@
+Bundle-Name: portlet-participant
+Bundle-SymbolicName: portlet.participant
+Bundle-Version: 1.0.0
+Export-Package: portlet.participant.constants

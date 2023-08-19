@@ -1,0 +1,11 @@
+dependencies {
+	compile project(":modules:event-obs:event-obs-api")
+
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
+}
+
+buildService {
+	apiDir = "../event-obs-api/src/main/java"
+}
+
+group = "event.obs"

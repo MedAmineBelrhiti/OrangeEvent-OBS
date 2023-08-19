@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.4.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_4_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="event.obs">
+    <namespace>OBS</namespace>
+    <!-- CLASS EVENT -->
+    <entity name="EvenementObs" local-service="true" remote-service="true" uuid="true">
+        <!-- PRIMARY KEY -->
+        <column name="idEvent" type="long" primary="true"/>
+        <!-- Group instance -->
+        <column name="groupId" type="long" />
+        <!-- Audit fields -->
+        <column name="companyId" type="long" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+        <!-- FIELDS EVENT -->
+        <column name="titre" type="String"/>
+        <column name="startDate" type="Date"/>
+        <column name="endDate" type="Date"/>
+        <column name="lieu" type="String"/>
+        <column name="description" type="String"/>
+        <column name="votingEndDate" type="Date"/>
+        <column name="nbrUserMax" type="int"/>
+        <column name="nbrUserConfirmed" type="int"/>
+        <column name="managerName" type="String"/>
+        <column name="entityName" type="String"/>
+
+        <!-- Finders -->
+        <finder name="Entites" return-type="Collection">
+            <finder-column name="entityName"></finder-column>
+        </finder>
+    </entity>
+
+    <entity name="Entite" uuid="true" remote-service="true" local-service="true">
+        <!-- PRIMARY KEY -->
+        <column name="idEntite" type="long" primary="true"/>
+        <!-- Group instance -->
+        <column name="groupId" type="long" />
+        <!-- Audit fields -->
+        <column name="companyId" type="long" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+        <!-- FIELDS EVENT -->
+        <column name="libelle" type="String"/>
+    </entity>
+
+    <!-- CLASS TRANSPORT -->
+    <entity name="Transport" uuid="true" remote-service="true" local-service="true">
+        <!-- PRIMARY KEY -->
+        <column name="idTransport" type="long" primary="true"/>
+        <!-- Group instance -->
+        <column name="groupId" type="long" />
+        <!-- Audit fields -->
+        <column name="companyId" type="long" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+        <!-- FIELDS TRANSPORT -->
+        <column name="collec" type="boolean"/>
+        <column name="prive" type="boolean"/>
+        <!-- REFERENCES : MAPPING -->
+        <column name="idEvent" type="long" />
+
+    </entity>
+
+    <!-- CLASS MESSAGING -->
+    <entity name="Messaging" uuid="true" remote-service="true" local-service="true">
+        <!-- PRIMARY KEY -->
+        <column name="idMessage" type="long" primary="true"/>
+        <!-- Group instance -->
+        <column name="groupId" type="long" />
+        <!-- Audit fields -->
+        <column name="companyId" type="long" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+        <!-- FIELDS MESSAGING -->
+        <column name="content" type="String"/>
+        <!-- REFERENCES : MAPPING -->
+        <column name="idEvent" type="long"/>
+
+    </entity>
+
+    <!-- CLASS DEMAND -->
+    <entity name="DemandEventObs" uuid="true" remote-service="true" local-service="true">
+        <!-- PRIMARY KEY -->
+        <column name="idDemand" type="long" primary="true"/>
+        <!-- Group instance -->
+        <column name="groupId" type="long" />
+        <!-- Audit fields -->
+        <column name="companyId" type="long" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+        <!-- FIELDS DEMAND -->
+        <column name="content" type="String"/>
+        <column name="status" type="String"/>
+        <column name="firstName" type="String"/>
+        <column name="lastName" type="String"/>
+
+        <!-- Finders -->
+        <finder name="Status" return-type="Collection">
+            <finder-column name="status"></finder-column>
+        </finder>
+    </entity>
+    <entity name="ContactSupport" uuid="true" remote-service="true" local-service="true">
+        <!-- PRIMARY KEY -->
+        <column name="idMessage" type="long" primary="true"/>
+        <!-- Group instance -->
+        <column name="groupId" type="long" />
+        <!-- Audit fields -->
+        <column name="companyId" type="long" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+        <!-- FIELDS DEMAND -->
+        <column name="nom" type="String"/>
+        <column name="prenom" type="String"/>
+        <column name="entite" type="String"/>
+        <column name="objet" type="String"/>
+        <column name="email" type="String"/>
+        <column name="telephone" type="String"/>
+        <column name="message" type="String"/>
+
+    </entity>
+    <entity name="Reservation" uuid="true" remote-service="true" local-service="true">
+        <!-- PRIMARY KEY -->
+        <column name="idReservation" type="long" primary="true"/>
+        <!-- Group instance -->
+        <column name="groupId" type="long" />
+        <!-- Audit fields -->
+        <column name="companyId" type="long" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+        <!-- FIELDS DEMAND -->
+        <column name="nom" type="String"/>
+        <column name="prenom" type="String"/>
+        <column name="entite" type="String"/>
+        <column name="descriptionEvent" type="String"/>
+        <column name="status" type="String"/>
+    </entity>
+    <entity name="Participant" uuid="true" remote-service="true" local-service="true">
+        <!-- PRIMARY KEY -->
+        <column name="idParticipant" type="long" primary="true"/>
+        <!-- Group instance -->
+        <column name="groupId" type="long" />
+        <!-- Audit fields -->
+        <column name="companyId" type="long" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+        <!-- FIELDS PARTICIPANT -->
+        <column name="idUser" type="long"/>
+        <column name="entite" type="String"/>
+    </entity>
+</service-builder>

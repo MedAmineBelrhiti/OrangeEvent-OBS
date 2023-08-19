@@ -1,0 +1,9 @@
+/* These inject tags are used for dynamically creating imports for themelet styles, you can place them where ever you like in this file. */
+
+/* inject:imports */
+@import url("https://cdn.jsdelivr.net/npm/boosted@5.2.3/dist/css/boosted.min.css");
+@import url("https://cdn.jsdelivr.net");
+@import url("https://cdn.jsdelivr.net/npm/boosted@5.2.3/dist/js/boosted.bundle.min.js");
+/* endinject */
+
+/* This file allows you to override default styles in one central location for easier upgrade and maintenance. */

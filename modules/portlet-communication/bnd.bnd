@@ -1,0 +1,4 @@
+Bundle-Name: portlet-communication
+Bundle-SymbolicName: portlet.communication
+Bundle-Version: 1.0.0
+Export-Package: portlet.communication.constants

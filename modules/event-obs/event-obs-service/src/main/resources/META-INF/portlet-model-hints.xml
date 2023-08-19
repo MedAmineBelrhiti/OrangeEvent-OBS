@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="event.obs.model.ContactSupport">
+		<field name="uuid" type="String" />
+		<field name="idMessage" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="nom" type="String" />
+		<field name="prenom" type="String" />
+		<field name="entite" type="String" />
+		<field name="objet" type="String" />
+		<field name="email" type="String" />
+		<field name="telephone" type="String" />
+		<field name="message" type="String" />
+	</model>
+	<model name="event.obs.model.DemandEventObs">
+		<field name="uuid" type="String" />
+		<field name="idDemand" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="content" type="String" />
+		<field name="status" type="String" />
+		<field name="firstName" type="String" />
+		<field name="lastName" type="String" />
+	</model>
+	<model name="event.obs.model.Entite">
+		<field name="uuid" type="String" />
+		<field name="idEntite" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="libelle" type="String" />
+	</model>
+	<model name="event.obs.model.EvenementObs">
+		<field name="uuid" type="String" />
+		<field name="idEvent" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="titre" type="String" />
+		<field name="startDate" type="Date" />
+		<field name="endDate" type="Date" />
+		<field name="lieu" type="String" />
+		<field name="description" type="String" />
+		<field name="votingEndDate" type="Date" />
+		<field name="nbrUserMax" type="int" />
+		<field name="nbrUserConfirmed" type="int" />
+		<field name="managerName" type="String" />
+		<field name="entityName" type="String" />
+	</model>
+	<model name="event.obs.model.Messaging">
+		<field name="uuid" type="String" />
+		<field name="idMessage" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="content" type="String" />
+		<field name="idEvent" type="long" />
+	</model>
+	<model name="event.obs.model.Participant">
+		<field name="uuid" type="String" />
+		<field name="idParticipant" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="idUser" type="long" />
+		<field name="entite" type="String" />
+	</model>
+	<model name="event.obs.model.Reservation">
+		<field name="uuid" type="String" />
+		<field name="idReservation" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="nom" type="String" />
+		<field name="prenom" type="String" />
+		<field name="entite" type="String" />
+		<field name="descriptionEvent" type="String" />
+		<field name="status" type="String" />
+	</model>
+	<model name="event.obs.model.Transport">
+		<field name="uuid" type="String" />
+		<field name="idTransport" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="collec" type="boolean" />
+		<field name="prive" type="boolean" />
+		<field name="idEvent" type="long" />
+	</model>
+</model-hints>

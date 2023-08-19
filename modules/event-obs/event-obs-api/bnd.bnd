@@ -1,0 +1,10 @@
+Bundle-Name: event-obs-api
+Bundle-SymbolicName: event.obs.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	event.obs.exception,\
+	event.obs.model,\
+	event.obs.service,\
+	event.obs.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../event-obs-service/service.xml
