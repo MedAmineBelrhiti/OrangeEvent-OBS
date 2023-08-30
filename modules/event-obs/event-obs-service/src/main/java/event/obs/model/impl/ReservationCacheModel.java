@@ -77,16 +77,16 @@ public class ReservationCacheModel
 		sb.append(createDate);
 		sb.append(", modifiedDate=");
 		sb.append(modifiedDate);
+		sb.append(", idUser=");
+		sb.append(idUser);
+		sb.append(", idEvent=");
+		sb.append(idEvent);
 		sb.append(", nom=");
 		sb.append(nom);
 		sb.append(", prenom=");
 		sb.append(prenom);
 		sb.append(", entite=");
 		sb.append(entite);
-		sb.append(", descriptionEvent=");
-		sb.append(descriptionEvent);
-		sb.append(", status=");
-		sb.append(status);
 		sb.append("}");
 
 		return sb.toString();
@@ -121,6 +121,9 @@ public class ReservationCacheModel
 			reservationImpl.setModifiedDate(new Date(modifiedDate));
 		}
 
+		reservationImpl.setIdUser(idUser);
+		reservationImpl.setIdEvent(idEvent);
+
 		if (nom == null) {
 			reservationImpl.setNom("");
 		}
@@ -142,20 +145,6 @@ public class ReservationCacheModel
 			reservationImpl.setEntite(entite);
 		}
 
-		if (descriptionEvent == null) {
-			reservationImpl.setDescriptionEvent("");
-		}
-		else {
-			reservationImpl.setDescriptionEvent(descriptionEvent);
-		}
-
-		if (status == null) {
-			reservationImpl.setStatus("");
-		}
-		else {
-			reservationImpl.setStatus(status);
-		}
-
 		reservationImpl.resetOriginalValues();
 
 		return reservationImpl;
@@ -172,11 +161,13 @@ public class ReservationCacheModel
 		companyId = objectInput.readLong();
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
+
+		idUser = objectInput.readLong();
+
+		idEvent = objectInput.readLong();
 		nom = objectInput.readUTF();
 		prenom = objectInput.readUTF();
 		entite = objectInput.readUTF();
-		descriptionEvent = objectInput.readUTF();
-		status = objectInput.readUTF();
 	}
 
 	@Override
@@ -195,6 +186,10 @@ public class ReservationCacheModel
 		objectOutput.writeLong(companyId);
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(modifiedDate);
+
+		objectOutput.writeLong(idUser);
+
+		objectOutput.writeLong(idEvent);
 
 		if (nom == null) {
 			objectOutput.writeUTF("");
@@ -216,20 +211,6 @@ public class ReservationCacheModel
 		else {
 			objectOutput.writeUTF(entite);
 		}
-
-		if (descriptionEvent == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(descriptionEvent);
-		}
-
-		if (status == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(status);
-		}
 	}
 
 	public String uuid;
@@ -238,10 +219,10 @@ public class ReservationCacheModel
 	public long companyId;
 	public long createDate;
 	public long modifiedDate;
+	public long idUser;
+	public long idEvent;
 	public String nom;
 	public String prenom;
 	public String entite;
-	public String descriptionEvent;
-	public String status;
 
 }

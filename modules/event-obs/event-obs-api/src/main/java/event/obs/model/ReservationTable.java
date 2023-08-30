@@ -44,18 +44,16 @@ public class ReservationTable extends BaseTable<ReservationTable> {
 		"createDate", Date.class, Types.TIMESTAMP, Column.FLAG_DEFAULT);
 	public final Column<ReservationTable, Date> modifiedDate = createColumn(
 		"modifiedDate", Date.class, Types.TIMESTAMP, Column.FLAG_DEFAULT);
+	public final Column<ReservationTable, Long> idUser = createColumn(
+		"idUser", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
+	public final Column<ReservationTable, Long> idEvent = createColumn(
+		"idEvent", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
 	public final Column<ReservationTable, String> nom = createColumn(
 		"nom", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 	public final Column<ReservationTable, String> prenom = createColumn(
 		"prenom", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 	public final Column<ReservationTable, String> entite = createColumn(
 		"entite", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
-	public final Column<ReservationTable, String> descriptionEvent =
-		createColumn(
-			"descriptionEvent", String.class, Types.VARCHAR,
-			Column.FLAG_DEFAULT);
-	public final Column<ReservationTable, String> status = createColumn(
-		"status", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 
 	private ReservationTable() {
 		super("OBS_Reservation", ReservationTable::new);

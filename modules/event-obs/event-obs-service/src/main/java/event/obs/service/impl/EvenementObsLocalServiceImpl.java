@@ -50,7 +50,16 @@ public class EvenementObsLocalServiceImpl extends EvenementObsLocalServiceBaseIm
 		return event;
 	}
 
-	public List<EvenementObs> getEventsByEntityName(int start , int end , String entityName){
-		return evenementObsPersistence.findByEntites(entityName , start , end);
+	public List<EvenementObs> getEventsByEntityName(String entityName){
+		return evenementObsPersistence.findByEntites(entityName);
+	}
+	public EvenementObs incrementNbrUserConfirmed(long idEvent){
+
+		EvenementObs evenementObs =evenementObsPersistence.fetchByPrimaryKey(idEvent);
+		if(evenementObs.getNbrUserMax()<evenementObs.getNbrUserConfirmed()) {
+			evenementObs.setNbrUserConfirmed(evenementObs.getNbrUserConfirmed() + 1);
+			return evenementObsPersistence.update(evenementObs);
+		}
+		return evenementObs;
 	}
 }

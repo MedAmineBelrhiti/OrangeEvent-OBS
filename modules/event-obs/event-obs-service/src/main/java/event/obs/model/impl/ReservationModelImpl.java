@@ -74,9 +74,9 @@ public class ReservationModelImpl
 		{"uuid_", Types.VARCHAR}, {"idReservation", Types.BIGINT},
 		{"groupId", Types.BIGINT}, {"companyId", Types.BIGINT},
 		{"createDate", Types.TIMESTAMP}, {"modifiedDate", Types.TIMESTAMP},
+		{"idUser", Types.BIGINT}, {"idEvent", Types.BIGINT},
 		{"nom", Types.VARCHAR}, {"prenom", Types.VARCHAR},
-		{"entite", Types.VARCHAR}, {"descriptionEvent", Types.VARCHAR},
-		{"status", Types.VARCHAR}
+		{"entite", Types.VARCHAR}
 	};
 
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP =
@@ -89,15 +89,15 @@ public class ReservationModelImpl
 		TABLE_COLUMNS_MAP.put("companyId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("createDate", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("modifiedDate", Types.TIMESTAMP);
+		TABLE_COLUMNS_MAP.put("idUser", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("idEvent", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("nom", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("prenom", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("entite", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("descriptionEvent", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("status", Types.VARCHAR);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table OBS_Reservation (uuid_ VARCHAR(75) null,idReservation LONG not null primary key,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,nom VARCHAR(75) null,prenom VARCHAR(75) null,entite VARCHAR(75) null,descriptionEvent VARCHAR(75) null,status VARCHAR(75) null)";
+		"create table OBS_Reservation (uuid_ VARCHAR(75) null,idReservation LONG not null primary key,groupId LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,idUser LONG,idEvent LONG,nom VARCHAR(75) null,prenom VARCHAR(75) null,entite VARCHAR(75) null)";
 
 	public static final String TABLE_SQL_DROP = "drop table OBS_Reservation";
 
@@ -272,6 +272,12 @@ public class ReservationModelImpl
 		attributeSetterBiConsumers.put(
 			"modifiedDate",
 			(BiConsumer<Reservation, Date>)Reservation::setModifiedDate);
+		attributeGetterFunctions.put("idUser", Reservation::getIdUser);
+		attributeSetterBiConsumers.put(
+			"idUser", (BiConsumer<Reservation, Long>)Reservation::setIdUser);
+		attributeGetterFunctions.put("idEvent", Reservation::getIdEvent);
+		attributeSetterBiConsumers.put(
+			"idEvent", (BiConsumer<Reservation, Long>)Reservation::setIdEvent);
 		attributeGetterFunctions.put("nom", Reservation::getNom);
 		attributeSetterBiConsumers.put(
 			"nom", (BiConsumer<Reservation, String>)Reservation::setNom);
@@ -281,14 +287,6 @@ public class ReservationModelImpl
 		attributeGetterFunctions.put("entite", Reservation::getEntite);
 		attributeSetterBiConsumers.put(
 			"entite", (BiConsumer<Reservation, String>)Reservation::setEntite);
-		attributeGetterFunctions.put(
-			"descriptionEvent", Reservation::getDescriptionEvent);
-		attributeSetterBiConsumers.put(
-			"descriptionEvent",
-			(BiConsumer<Reservation, String>)Reservation::setDescriptionEvent);
-		attributeGetterFunctions.put("status", Reservation::getStatus);
-		attributeSetterBiConsumers.put(
-			"status", (BiConsumer<Reservation, String>)Reservation::setStatus);
 
 		_attributeGetterFunctions = Collections.unmodifiableMap(
 			attributeGetterFunctions);
@@ -427,6 +425,36 @@ public class ReservationModelImpl
 
 	@JSON
 	@Override
+	public long getIdUser() {
+		return _idUser;
+	}
+
+	@Override
+	public void setIdUser(long idUser) {
+		if (_columnOriginalValues == Collections.EMPTY_MAP) {
+			_setColumnOriginalValues();
+		}
+
+		_idUser = idUser;
+	}
+
+	@JSON
+	@Override
+	public long getIdEvent() {
+		return _idEvent;
+	}
+
+	@Override
+	public void setIdEvent(long idEvent) {
+		if (_columnOriginalValues == Collections.EMPTY_MAP) {
+			_setColumnOriginalValues();
+		}
+
+		_idEvent = idEvent;
+	}
+
+	@JSON
+	@Override
 	public String getNom() {
 		if (_nom == null) {
 			return "";
@@ -483,46 +511,6 @@ public class ReservationModelImpl
 		}
 
 		_entite = entite;
-	}
-
-	@JSON
-	@Override
-	public String getDescriptionEvent() {
-		if (_descriptionEvent == null) {
-			return "";
-		}
-		else {
-			return _descriptionEvent;
-		}
-	}
-
-	@Override
-	public void setDescriptionEvent(String descriptionEvent) {
-		if (_columnOriginalValues == Collections.EMPTY_MAP) {
-			_setColumnOriginalValues();
-		}
-
-		_descriptionEvent = descriptionEvent;
-	}
-
-	@JSON
-	@Override
-	public String getStatus() {
-		if (_status == null) {
-			return "";
-		}
-		else {
-			return _status;
-		}
-	}
-
-	@Override
-	public void setStatus(String status) {
-		if (_columnOriginalValues == Collections.EMPTY_MAP) {
-			_setColumnOriginalValues();
-		}
-
-		_status = status;
 	}
 
 	@Override
@@ -593,11 +581,11 @@ public class ReservationModelImpl
 		reservationImpl.setCompanyId(getCompanyId());
 		reservationImpl.setCreateDate(getCreateDate());
 		reservationImpl.setModifiedDate(getModifiedDate());
+		reservationImpl.setIdUser(getIdUser());
+		reservationImpl.setIdEvent(getIdEvent());
 		reservationImpl.setNom(getNom());
 		reservationImpl.setPrenom(getPrenom());
 		reservationImpl.setEntite(getEntite());
-		reservationImpl.setDescriptionEvent(getDescriptionEvent());
-		reservationImpl.setStatus(getStatus());
 
 		reservationImpl.resetOriginalValues();
 
@@ -619,15 +607,14 @@ public class ReservationModelImpl
 			this.<Date>getColumnOriginalValue("createDate"));
 		reservationImpl.setModifiedDate(
 			this.<Date>getColumnOriginalValue("modifiedDate"));
+		reservationImpl.setIdUser(this.<Long>getColumnOriginalValue("idUser"));
+		reservationImpl.setIdEvent(
+			this.<Long>getColumnOriginalValue("idEvent"));
 		reservationImpl.setNom(this.<String>getColumnOriginalValue("nom"));
 		reservationImpl.setPrenom(
 			this.<String>getColumnOriginalValue("prenom"));
 		reservationImpl.setEntite(
 			this.<String>getColumnOriginalValue("entite"));
-		reservationImpl.setDescriptionEvent(
-			this.<String>getColumnOriginalValue("descriptionEvent"));
-		reservationImpl.setStatus(
-			this.<String>getColumnOriginalValue("status"));
 
 		return reservationImpl;
 	}
@@ -738,6 +725,10 @@ public class ReservationModelImpl
 			reservationCacheModel.modifiedDate = Long.MIN_VALUE;
 		}
 
+		reservationCacheModel.idUser = getIdUser();
+
+		reservationCacheModel.idEvent = getIdEvent();
+
 		reservationCacheModel.nom = getNom();
 
 		String nom = reservationCacheModel.nom;
@@ -760,22 +751,6 @@ public class ReservationModelImpl
 
 		if ((entite != null) && (entite.length() == 0)) {
 			reservationCacheModel.entite = null;
-		}
-
-		reservationCacheModel.descriptionEvent = getDescriptionEvent();
-
-		String descriptionEvent = reservationCacheModel.descriptionEvent;
-
-		if ((descriptionEvent != null) && (descriptionEvent.length() == 0)) {
-			reservationCacheModel.descriptionEvent = null;
-		}
-
-		reservationCacheModel.status = getStatus();
-
-		String status = reservationCacheModel.status;
-
-		if ((status != null) && (status.length() == 0)) {
-			reservationCacheModel.status = null;
 		}
 
 		return reservationCacheModel;
@@ -846,11 +821,11 @@ public class ReservationModelImpl
 	private Date _createDate;
 	private Date _modifiedDate;
 	private boolean _setModifiedDate;
+	private long _idUser;
+	private long _idEvent;
 	private String _nom;
 	private String _prenom;
 	private String _entite;
-	private String _descriptionEvent;
-	private String _status;
 
 	public <T> T getColumnValue(String columnName) {
 		columnName = _attributeNames.getOrDefault(columnName, columnName);
@@ -887,11 +862,11 @@ public class ReservationModelImpl
 		_columnOriginalValues.put("companyId", _companyId);
 		_columnOriginalValues.put("createDate", _createDate);
 		_columnOriginalValues.put("modifiedDate", _modifiedDate);
+		_columnOriginalValues.put("idUser", _idUser);
+		_columnOriginalValues.put("idEvent", _idEvent);
 		_columnOriginalValues.put("nom", _nom);
 		_columnOriginalValues.put("prenom", _prenom);
 		_columnOriginalValues.put("entite", _entite);
-		_columnOriginalValues.put("descriptionEvent", _descriptionEvent);
-		_columnOriginalValues.put("status", _status);
 	}
 
 	private static final Map<String, String> _attributeNames;
@@ -927,15 +902,15 @@ public class ReservationModelImpl
 
 		columnBitmasks.put("modifiedDate", 32L);
 
-		columnBitmasks.put("nom", 64L);
+		columnBitmasks.put("idUser", 64L);
 
-		columnBitmasks.put("prenom", 128L);
+		columnBitmasks.put("idEvent", 128L);
 
-		columnBitmasks.put("entite", 256L);
+		columnBitmasks.put("nom", 256L);
 
-		columnBitmasks.put("descriptionEvent", 512L);
+		columnBitmasks.put("prenom", 512L);
 
-		columnBitmasks.put("status", 1024L);
+		columnBitmasks.put("entite", 1024L);
 
 		_columnBitmasks = Collections.unmodifiableMap(columnBitmasks);
 	}

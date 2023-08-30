@@ -49,11 +49,11 @@ public class ReservationWrapper
 		attributes.put("companyId", getCompanyId());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
+		attributes.put("idUser", getIdUser());
+		attributes.put("idEvent", getIdEvent());
 		attributes.put("nom", getNom());
 		attributes.put("prenom", getPrenom());
 		attributes.put("entite", getEntite());
-		attributes.put("descriptionEvent", getDescriptionEvent());
-		attributes.put("status", getStatus());
 
 		return attributes;
 	}
@@ -96,6 +96,18 @@ public class ReservationWrapper
 			setModifiedDate(modifiedDate);
 		}
 
+		Long idUser = (Long)attributes.get("idUser");
+
+		if (idUser != null) {
+			setIdUser(idUser);
+		}
+
+		Long idEvent = (Long)attributes.get("idEvent");
+
+		if (idEvent != null) {
+			setIdEvent(idEvent);
+		}
+
 		String nom = (String)attributes.get("nom");
 
 		if (nom != null) {
@@ -112,18 +124,6 @@ public class ReservationWrapper
 
 		if (entite != null) {
 			setEntite(entite);
-		}
-
-		String descriptionEvent = (String)attributes.get("descriptionEvent");
-
-		if (descriptionEvent != null) {
-			setDescriptionEvent(descriptionEvent);
-		}
-
-		String status = (String)attributes.get("status");
-
-		if (status != null) {
-			setStatus(status);
 		}
 	}
 
@@ -153,16 +153,6 @@ public class ReservationWrapper
 	}
 
 	/**
-	 * Returns the description event of this reservation.
-	 *
-	 * @return the description event of this reservation
-	 */
-	@Override
-	public String getDescriptionEvent() {
-		return model.getDescriptionEvent();
-	}
-
-	/**
 	 * Returns the entite of this reservation.
 	 *
 	 * @return the entite of this reservation
@@ -183,6 +173,16 @@ public class ReservationWrapper
 	}
 
 	/**
+	 * Returns the id event of this reservation.
+	 *
+	 * @return the id event of this reservation
+	 */
+	@Override
+	public long getIdEvent() {
+		return model.getIdEvent();
+	}
+
+	/**
 	 * Returns the id reservation of this reservation.
 	 *
 	 * @return the id reservation of this reservation
@@ -190,6 +190,16 @@ public class ReservationWrapper
 	@Override
 	public long getIdReservation() {
 		return model.getIdReservation();
+	}
+
+	/**
+	 * Returns the id user of this reservation.
+	 *
+	 * @return the id user of this reservation
+	 */
+	@Override
+	public long getIdUser() {
+		return model.getIdUser();
 	}
 
 	/**
@@ -233,16 +243,6 @@ public class ReservationWrapper
 	}
 
 	/**
-	 * Returns the status of this reservation.
-	 *
-	 * @return the status of this reservation
-	 */
-	@Override
-	public String getStatus() {
-		return model.getStatus();
-	}
-
-	/**
 	 * Returns the uuid of this reservation.
 	 *
 	 * @return the uuid of this reservation
@@ -278,16 +278,6 @@ public class ReservationWrapper
 	}
 
 	/**
-	 * Sets the description event of this reservation.
-	 *
-	 * @param descriptionEvent the description event of this reservation
-	 */
-	@Override
-	public void setDescriptionEvent(String descriptionEvent) {
-		model.setDescriptionEvent(descriptionEvent);
-	}
-
-	/**
 	 * Sets the entite of this reservation.
 	 *
 	 * @param entite the entite of this reservation
@@ -308,6 +298,16 @@ public class ReservationWrapper
 	}
 
 	/**
+	 * Sets the id event of this reservation.
+	 *
+	 * @param idEvent the id event of this reservation
+	 */
+	@Override
+	public void setIdEvent(long idEvent) {
+		model.setIdEvent(idEvent);
+	}
+
+	/**
 	 * Sets the id reservation of this reservation.
 	 *
 	 * @param idReservation the id reservation of this reservation
@@ -315,6 +315,16 @@ public class ReservationWrapper
 	@Override
 	public void setIdReservation(long idReservation) {
 		model.setIdReservation(idReservation);
+	}
+
+	/**
+	 * Sets the id user of this reservation.
+	 *
+	 * @param idUser the id user of this reservation
+	 */
+	@Override
+	public void setIdUser(long idUser) {
+		model.setIdUser(idUser);
 	}
 
 	/**
@@ -355,16 +365,6 @@ public class ReservationWrapper
 	@Override
 	public void setPrimaryKey(long primaryKey) {
 		model.setPrimaryKey(primaryKey);
-	}
-
-	/**
-	 * Sets the status of this reservation.
-	 *
-	 * @param status the status of this reservation
-	 */
-	@Override
-	public void setStatus(String status) {
-		model.setStatus(status);
 	}
 
 	/**

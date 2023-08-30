@@ -48,12 +48,10 @@ public class EvenementObsServiceWrapper
 
 	@Override
 	public java.util.List<event.obs.model.EvenementObs> getEventsByEntityName(
-			int start, int end,
 			com.liferay.portal.kernel.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _evenementObsService.getEventsByEntityName(
-			start, end, serviceContext);
+		return _evenementObsService.getEventsByEntityName(serviceContext);
 	}
 
 	/**
@@ -64,6 +62,13 @@ public class EvenementObsServiceWrapper
 	@Override
 	public String getOSGiServiceIdentifier() {
 		return _evenementObsService.getOSGiServiceIdentifier();
+	}
+
+	@Override
+	public event.obs.model.EvenementObs incrementNbrUserConfirmed(
+		long idEvent) {
+
+		return _evenementObsService.incrementNbrUserConfirmed(idEvent);
 	}
 
 	@Override

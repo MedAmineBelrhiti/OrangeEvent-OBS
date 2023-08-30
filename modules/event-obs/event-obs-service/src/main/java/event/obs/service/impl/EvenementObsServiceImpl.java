@@ -38,14 +38,18 @@ import java.util.List;
 	service = AopService.class
 )
 public class EvenementObsServiceImpl extends EvenementObsServiceBaseImpl {
-	public EvenementObs addEvenement (Date startDate, Date endDate, String lieu, String description, Date votingEndDate, String titre, int nbrUserMax , String managerName, String entityName, ServiceContext serviceContext){
-		return evenementObsLocalService.addEvenement(startDate,endDate,lieu,description,votingEndDate,titre,nbrUserMax,managerName,entityName);
+	public EvenementObs addEvenement(Date startDate, Date endDate, String lieu, String description, Date votingEndDate, String titre, int nbrUserMax, String managerName, String entityName, ServiceContext serviceContext) {
+		return evenementObsLocalService.addEvenement(startDate, endDate, lieu, description, votingEndDate, titre, nbrUserMax, managerName, entityName);
 	}
-	public List<EvenementObs> getEventsByEntityName(int start , int end , ServiceContext serviceContext) throws PortalException {
+
+	public List<EvenementObs> getEventsByEntityName(ServiceContext serviceContext) throws PortalException {
 		long currentUserId = serviceContext.getUserId();
 		User user = userService.getUserById(currentUserId);
 		String entityName = (String) user.getExpandoBridge().getAttribute("entite");
+		return evenementObsPersistence.findByEntites(entityName);
+	}
 
-		return evenementObsPersistence.findByEntites(entityName , start , end);
+	public EvenementObs incrementNbrUserConfirmed(long idEvent) {
+		return evenementObsLocalService.incrementNbrUserConfirmed(idEvent);
 	}
 }

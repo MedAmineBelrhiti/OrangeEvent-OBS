@@ -22,12 +22,6 @@
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="right-top-navbar text-right">
                     <ul class="list-inline mb-0">
-                        <li class="list-inline-item py-2">
-                            <a href="javascript:void(0)"><strong>
-                                    Welcome:
-                                </strong>
-                            </a>
-                        </li>
                         <#if is_signed_in>
                             <li class="list-inline-item py-2">
                                 <a href="javascript:void(0)">

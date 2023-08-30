@@ -322,10 +322,8 @@ public class EvenementObsLocalServiceUtil {
 		return getService().getEvenementObsesCount();
 	}
 
-	public static List<EvenementObs> getEventsByEntityName(
-		int start, int end, String entityName) {
-
-		return getService().getEventsByEntityName(start, end, entityName);
+	public static List<EvenementObs> getEventsByEntityName(String entityName) {
+		return getService().getEventsByEntityName(entityName);
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery
@@ -359,6 +357,10 @@ public class EvenementObsLocalServiceUtil {
 		throws PortalException {
 
 		return getService().getPersistedModel(primaryKeyObj);
+	}
+
+	public static EvenementObs incrementNbrUserConfirmed(long idEvent) {
+		return getService().incrementNbrUserConfirmed(idEvent);
 	}
 
 	/**

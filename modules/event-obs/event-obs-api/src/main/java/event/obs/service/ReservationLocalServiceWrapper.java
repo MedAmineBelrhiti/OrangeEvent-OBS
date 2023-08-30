@@ -37,6 +37,16 @@ public class ReservationLocalServiceWrapper
 		_reservationLocalService = reservationLocalService;
 	}
 
+	@Override
+	public event.obs.model.Reservation addReservation(
+			long idEvent, long idUser, String firstName, String lastName,
+			String entite)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _reservationLocalService.addReservation(
+			idEvent, idUser, firstName, lastName, entite);
+	}
+
 	/**
 	 * Adds the reservation to the database. Also notifies the appropriate model listeners.
 	 *

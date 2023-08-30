@@ -129,11 +129,11 @@
         <column name="createDate" type="Date" />
         <column name="modifiedDate" type="Date" />
         <!-- FIELDS DEMAND -->
+        <column name="idUser" type="long"/>
+        <column name="idEvent" type="long"/>
         <column name="nom" type="String"/>
         <column name="prenom" type="String"/>
         <column name="entite" type="String"/>
-        <column name="descriptionEvent" type="String"/>
-        <column name="status" type="String"/>
     </entity>
     <entity name="Participant" uuid="true" remote-service="true" local-service="true">
         <!-- PRIMARY KEY -->

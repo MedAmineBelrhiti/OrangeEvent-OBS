@@ -359,10 +359,9 @@ public class EvenementObsLocalServiceWrapper
 
 	@Override
 	public java.util.List<event.obs.model.EvenementObs> getEventsByEntityName(
-		int start, int end, String entityName) {
+		String entityName) {
 
-		return _evenementObsLocalService.getEventsByEntityName(
-			start, end, entityName);
+		return _evenementObsLocalService.getEventsByEntityName(entityName);
 	}
 
 	@Override
@@ -401,6 +400,13 @@ public class EvenementObsLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _evenementObsLocalService.getPersistedModel(primaryKeyObj);
+	}
+
+	@Override
+	public event.obs.model.EvenementObs incrementNbrUserConfirmed(
+		long idEvent) {
+
+		return _evenementObsLocalService.incrementNbrUserConfirmed(idEvent);
 	}
 
 	/**

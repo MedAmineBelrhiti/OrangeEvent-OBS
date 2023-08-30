@@ -61,7 +61,7 @@ public interface EvenementObsService extends BaseService {
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<EvenementObs> getEventsByEntityName(
-			int start, int end, ServiceContext serviceContext)
+			ServiceContext serviceContext)
 		throws PortalException;
 
 	/**
@@ -70,5 +70,7 @@ public interface EvenementObsService extends BaseService {
 	 * @return the OSGi service identifier
 	 */
 	public String getOSGiServiceIdentifier();
+
+	public EvenementObs incrementNbrUserConfirmed(long idEvent);
 
 }

@@ -19,8 +19,11 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.jsonwebservice.JSONWebService;
 import com.liferay.portal.kernel.security.access.control.AccessControlled;
 import com.liferay.portal.kernel.service.BaseService;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.transaction.Isolation;
 import com.liferay.portal.kernel.transaction.Transactional;
+
+import event.obs.model.Reservation;
 
 import org.osgi.annotation.versioning.ProviderType;
 
@@ -47,6 +50,10 @@ public interface ReservationService extends BaseService {
 	 *
 	 * Never modify this interface directly. Add custom service methods to <code>event.obs.service.impl.ReservationServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface. Consume the reservation remote service via injection or a <code>org.osgi.util.tracker.ServiceTracker</code>. Use {@link ReservationServiceUtil} if injection and service tracking are not available.
 	 */
+	public Reservation addReservation(
+			long idEvent, long idUser, String firstName, String lastName,
+			String entite, ServiceContext serviceContext)
+		throws PortalException;
 
 	/**
 	 * Returns the OSGi service identifier.

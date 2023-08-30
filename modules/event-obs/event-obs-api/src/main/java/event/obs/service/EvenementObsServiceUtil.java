@@ -51,11 +51,10 @@ public class EvenementObsServiceUtil {
 	}
 
 	public static List<EvenementObs> getEventsByEntityName(
-			int start, int end,
 			com.liferay.portal.kernel.service.ServiceContext serviceContext)
 		throws PortalException {
 
-		return getService().getEventsByEntityName(start, end, serviceContext);
+		return getService().getEventsByEntityName(serviceContext);
 	}
 
 	/**
@@ -65,6 +64,10 @@ public class EvenementObsServiceUtil {
 	 */
 	public static String getOSGiServiceIdentifier() {
 		return getService().getOSGiServiceIdentifier();
+	}
+
+	public static EvenementObs incrementNbrUserConfirmed(long idEvent) {
+		return getService().incrementNbrUserConfirmed(idEvent);
 	}
 
 	public static EvenementObsService getService() {

@@ -31,7 +31,7 @@ import static com.orange.constants.PortletParticipantPortletKeys.*;
 		service = Portlet.class
 )
 public class PortletParticipantPortlet extends MVCPortlet {
-	@Reference(target = "(&(javax.portlet.name=" + PORTLETPARTICIPANT +")(mvc.command.name=" + PATH_VIEW + "))")
+	@Reference(target = "(&(javax.portlet.name=" + PORTLETPARTICIPANT +")(mvc.command.name=" + PATH_LIST_EVENT + "))")
 	private MVCRenderCommand defaultPage;
 	@Override
 	public void doView(RenderRequest renderRequest, RenderResponse renderResponse) throws IOException, PortletException {

@@ -85,11 +85,11 @@ create table OBS_Reservation (
 	companyId LONG,
 	createDate DATE null,
 	modifiedDate DATE null,
+	idUser LONG,
+	idEvent LONG,
 	nom VARCHAR(75) null,
 	prenom VARCHAR(75) null,
-	entite VARCHAR(75) null,
-	descriptionEvent VARCHAR(75) null,
-	status VARCHAR(75) null
+	entite VARCHAR(75) null
 );
 
 create table OBS_Transport (

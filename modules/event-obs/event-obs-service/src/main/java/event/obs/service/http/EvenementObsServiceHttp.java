@@ -90,7 +90,7 @@ public class EvenementObsServiceHttp {
 
 	public static java.util.List<event.obs.model.EvenementObs>
 			getEventsByEntityName(
-				HttpPrincipal httpPrincipal, int start, int end,
+				HttpPrincipal httpPrincipal,
 				com.liferay.portal.kernel.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
@@ -100,7 +100,7 @@ public class EvenementObsServiceHttp {
 				_getEventsByEntityNameParameterTypes1);
 
 			MethodHandler methodHandler = new MethodHandler(
-				methodKey, start, end, serviceContext);
+				methodKey, serviceContext);
 
 			Object returnObj = null;
 
@@ -130,6 +130,37 @@ public class EvenementObsServiceHttp {
 		}
 	}
 
+	public static event.obs.model.EvenementObs incrementNbrUserConfirmed(
+		HttpPrincipal httpPrincipal, long idEvent) {
+
+		try {
+			MethodKey methodKey = new MethodKey(
+				EvenementObsServiceUtil.class, "incrementNbrUserConfirmed",
+				_incrementNbrUserConfirmedParameterTypes2);
+
+			MethodHandler methodHandler = new MethodHandler(methodKey, idEvent);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception exception) {
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					exception);
+			}
+
+			return (event.obs.model.EvenementObs)returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException
+					systemException) {
+
+			_log.error(systemException, systemException);
+
+			throw systemException;
+		}
+	}
+
 	private static Log _log = LogFactoryUtil.getLog(
 		EvenementObsServiceHttp.class);
 
@@ -139,9 +170,8 @@ public class EvenementObsServiceHttp {
 		String.class, com.liferay.portal.kernel.service.ServiceContext.class
 	};
 	private static final Class<?>[] _getEventsByEntityNameParameterTypes1 =
-		new Class[] {
-			int.class, int.class,
-			com.liferay.portal.kernel.service.ServiceContext.class
-		};
+		new Class[] {com.liferay.portal.kernel.service.ServiceContext.class};
+	private static final Class<?>[] _incrementNbrUserConfirmedParameterTypes2 =
+		new Class[] {long.class};
 
 }

@@ -45,6 +45,14 @@ public class ReservationLocalServiceUtil {
 	 *
 	 * Never modify this class directly. Add custom service methods to <code>event.obs.service.impl.ReservationLocalServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
 	 */
+	public static Reservation addReservation(
+			long idEvent, long idUser, String firstName, String lastName,
+			String entite)
+		throws PortalException {
+
+		return getService().addReservation(
+			idEvent, idUser, firstName, lastName, entite);
+	}
 
 	/**
 	 * Adds the reservation to the database. Also notifies the appropriate model listeners.

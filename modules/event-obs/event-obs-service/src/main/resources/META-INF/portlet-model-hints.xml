@@ -82,11 +82,11 @@
 		<field name="companyId" type="long" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
+		<field name="idUser" type="long" />
+		<field name="idEvent" type="long" />
 		<field name="nom" type="String" />
 		<field name="prenom" type="String" />
 		<field name="entite" type="String" />
-		<field name="descriptionEvent" type="String" />
-		<field name="status" type="String" />
 	</model>
 	<model name="event.obs.model.Transport">
 		<field name="uuid" type="String" />

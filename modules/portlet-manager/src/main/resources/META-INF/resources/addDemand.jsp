@@ -13,16 +13,6 @@
             <h4 class="mb-3">Ajouter une demande</h4>
             <aui:form action="<%=addDemandURL.toString()%>" name="addDemand" class="needs-validation" method="POST">
                 <div class="row g-3">
-                    <div class="col-sm-6">
-                        <aui:input name="firstName" class="form-control">
-                            <aui:validator name="required"/>
-                        </aui:input>
-                    </div>
-                    <div class="col-sm-6">
-                        <aui:input name="lastName" class="form-control">
-                            <aui:validator name="required"/>
-                        </aui:input>
-                    </div>
                         <aui:input name="content" type="textarea" class="form-control">
                             <aui:validator name="required"/>
                         </aui:input>

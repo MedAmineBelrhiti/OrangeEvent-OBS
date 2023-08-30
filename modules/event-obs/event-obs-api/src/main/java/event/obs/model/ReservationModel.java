@@ -152,6 +152,34 @@ public interface ReservationModel
 	public void setModifiedDate(Date modifiedDate);
 
 	/**
+	 * Returns the id user of this reservation.
+	 *
+	 * @return the id user of this reservation
+	 */
+	public long getIdUser();
+
+	/**
+	 * Sets the id user of this reservation.
+	 *
+	 * @param idUser the id user of this reservation
+	 */
+	public void setIdUser(long idUser);
+
+	/**
+	 * Returns the id event of this reservation.
+	 *
+	 * @return the id event of this reservation
+	 */
+	public long getIdEvent();
+
+	/**
+	 * Sets the id event of this reservation.
+	 *
+	 * @param idEvent the id event of this reservation
+	 */
+	public void setIdEvent(long idEvent);
+
+	/**
 	 * Returns the nom of this reservation.
 	 *
 	 * @return the nom of this reservation
@@ -195,36 +223,6 @@ public interface ReservationModel
 	 * @param entite the entite of this reservation
 	 */
 	public void setEntite(String entite);
-
-	/**
-	 * Returns the description event of this reservation.
-	 *
-	 * @return the description event of this reservation
-	 */
-	@AutoEscape
-	public String getDescriptionEvent();
-
-	/**
-	 * Sets the description event of this reservation.
-	 *
-	 * @param descriptionEvent the description event of this reservation
-	 */
-	public void setDescriptionEvent(String descriptionEvent);
-
-	/**
-	 * Returns the status of this reservation.
-	 *
-	 * @return the status of this reservation
-	 */
-	@AutoEscape
-	public String getStatus();
-
-	/**
-	 * Sets the status of this reservation.
-	 *
-	 * @param status the status of this reservation
-	 */
-	public void setStatus(String status);
 
 	@Override
 	public Reservation cloneWithOriginalValues();

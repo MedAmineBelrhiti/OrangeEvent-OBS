@@ -293,8 +293,7 @@ public interface EvenementObsLocalService
 	public int getEvenementObsesCount();
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<EvenementObs> getEventsByEntityName(
-		int start, int end, String entityName);
+	public List<EvenementObs> getEventsByEntityName(String entityName);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ExportActionableDynamicQuery getExportActionableDynamicQuery(
@@ -317,6 +316,8 @@ public interface EvenementObsLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public PersistedModel getPersistedModel(Serializable primaryKeyObj)
 		throws PortalException;
+
+	public EvenementObs incrementNbrUserConfirmed(long idEvent);
 
 	/**
 	 * Updates the evenement obs in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.

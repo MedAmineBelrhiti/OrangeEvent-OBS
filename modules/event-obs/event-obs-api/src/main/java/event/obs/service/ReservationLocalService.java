@@ -64,6 +64,10 @@ public interface ReservationLocalService
 	 *
 	 * Never modify this interface directly. Add custom service methods to <code>event.obs.service.impl.ReservationLocalServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface. Consume the reservation local service via injection or a <code>org.osgi.util.tracker.ServiceTracker</code>. Use {@link ReservationLocalServiceUtil} if injection and service tracking are not available.
 	 */
+	public Reservation addReservation(
+			long idEvent, long idUser, String firstName, String lastName,
+			String entite)
+		throws PortalException;
 
 	/**
 	 * Adds the reservation to the database. Also notifies the appropriate model listeners.

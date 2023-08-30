@@ -16,6 +16,9 @@ package event.obs.service.impl;
 
 import com.liferay.portal.aop.AopService;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.service.ServiceContext;
+import event.obs.model.Reservation;
 import event.obs.service.base.ReservationServiceBaseImpl;
 
 import org.osgi.service.component.annotations.Component;
@@ -31,4 +34,7 @@ import org.osgi.service.component.annotations.Component;
 	service = AopService.class
 )
 public class ReservationServiceImpl extends ReservationServiceBaseImpl {
+	public Reservation addReservation(long idEvent, long idUser, String firstName, String lastName, String entite, ServiceContext serviceContext) throws PortalException {
+		return reservationLocalService.addReservation(idEvent,idUser,firstName,lastName,entite);
+	}
 }

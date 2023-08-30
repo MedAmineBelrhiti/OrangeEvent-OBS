@@ -34,6 +34,17 @@ public class ReservationServiceWrapper
 		_reservationService = reservationService;
 	}
 
+	@Override
+	public event.obs.model.Reservation addReservation(
+			long idEvent, long idUser, String firstName, String lastName,
+			String entite,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _reservationService.addReservation(
+			idEvent, idUser, firstName, lastName, entite, serviceContext);
+	}
+
 	/**
 	 * Returns the OSGi service identifier.
 	 *

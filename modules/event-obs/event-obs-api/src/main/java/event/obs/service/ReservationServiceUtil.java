@@ -14,6 +14,10 @@
 
 package event.obs.service;
 
+import com.liferay.portal.kernel.exception.PortalException;
+
+import event.obs.model.Reservation;
+
 /**
  * Provides the remote service utility for Reservation. This utility wraps
  * <code>event.obs.service.impl.ReservationServiceImpl</code> and is an
@@ -33,13 +37,22 @@ public class ReservationServiceUtil {
 	 *
 	 * Never modify this class directly. Add custom service methods to <code>event.obs.service.impl.ReservationServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
 	 */
+	public static Reservation addReservation(
+			long idEvent, long idUser, String firstName, String lastName,
+			String entite,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws PortalException {
+
+		return getService().addReservation(
+			idEvent, idUser, firstName, lastName, entite, serviceContext);
+	}
 
 	/**
 	 * Returns the OSGi service identifier.
 	 *
 	 * @return the OSGi service identifier
 	 */
-	public static java.lang.String getOSGiServiceIdentifier() {
+	public static String getOSGiServiceIdentifier() {
 		return getService().getOSGiServiceIdentifier();
 	}
 

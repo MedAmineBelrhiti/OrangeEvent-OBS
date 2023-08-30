@@ -14,13 +14,22 @@
 
 package event.obs.service.http;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.security.auth.HttpPrincipal;
+import com.liferay.portal.kernel.service.http.TunnelUtil;
+import com.liferay.portal.kernel.util.MethodHandler;
+import com.liferay.portal.kernel.util.MethodKey;
+
+import event.obs.service.ReservationServiceUtil;
+
 /**
  * Provides the HTTP utility for the
- * <code>event.obs.service.ReservationServiceUtil</code> service
+ * <code>ReservationServiceUtil</code> service
  * utility. The
  * static methods of this class calls the same methods of the service utility.
  * However, the signatures are different because it requires an additional
- * <code>com.liferay.portal.kernel.security.auth.HttpPrincipal</code> parameter.
+ * <code>HttpPrincipal</code> parameter.
  *
  * <p>
  * The benefits of using the HTTP utility is that it is fast and allows for
@@ -41,4 +50,57 @@ package event.obs.service.http;
  * @generated
  */
 public class ReservationServiceHttp {
+
+	public static event.obs.model.Reservation addReservation(
+			HttpPrincipal httpPrincipal, long idEvent, long idUser,
+			String firstName, String lastName, String entite,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		try {
+			MethodKey methodKey = new MethodKey(
+				ReservationServiceUtil.class, "addReservation",
+				_addReservationParameterTypes0);
+
+			MethodHandler methodHandler = new MethodHandler(
+				methodKey, idEvent, idUser, firstName, lastName, entite,
+				serviceContext);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception exception) {
+				if (exception instanceof
+						com.liferay.portal.kernel.exception.PortalException) {
+
+					throw (com.liferay.portal.kernel.exception.PortalException)
+						exception;
+				}
+
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					exception);
+			}
+
+			return (event.obs.model.Reservation)returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException
+					systemException) {
+
+			_log.error(systemException, systemException);
+
+			throw systemException;
+		}
+	}
+
+	private static Log _log = LogFactoryUtil.getLog(
+		ReservationServiceHttp.class);
+
+	private static final Class<?>[] _addReservationParameterTypes0 =
+		new Class[] {
+			long.class, long.class, String.class, String.class, String.class,
+			com.liferay.portal.kernel.service.ServiceContext.class
+		};
+
 }
